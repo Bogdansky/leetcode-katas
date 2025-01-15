@@ -36,3 +36,27 @@ function medianWithDictionary(nums1: number[], nums2: number[]): number{
         median = 
     }
 }
+
+function caseWithExactBorders(smallest: number[], biggest: number[]): number {
+    const expectedLength = smallest.length + biggest.length;
+    const medianIndex = Math.floor(expectedLength / 2) - 1;
+    const isEven = expectedLength % 2 === 0;
+
+    if (medianIndex >= smallest.length) {
+        if (isEven)
+            return biggest[medianIndex % biggest.length] + biggest[medianIndex % biggest.length + 1];
+
+        return biggest[medianIndex % biggest.length];
+    } else if (medianIndex === smallest.length - 1) {
+        if (isEven)
+            return smallest[medianIndex] + biggest[0];
+            
+        return smallest[medianIndex];
+    } else {
+        if (isEven)
+            return biggest[medianIndex % biggest.length] + biggest[medianIndex % biggest.length + 1];
+
+        return smallest[medianIndex]
+    }
+
+}
