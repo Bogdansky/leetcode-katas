@@ -37,6 +37,16 @@ function medianWithDictionary(nums1: number[], nums2: number[]): number{
     }
 }
 
+function medianWithPartialMerge(nums1: number[], nums2: number[]): number {
+    const areBoundariesKnown = nums1[0] !== nums2[0];
+
+    if (areBoundariesKnown) {
+        return nums1[0] > nums2[0] ? caseWithExactBorders(nums1, nums2) : caseWithExactBorders(nums2, nums1);
+    }
+
+    return 0;
+}
+
 function caseWithExactBorders(smallest: number[], biggest: number[]): number {
     const expectedLength = smallest.length + biggest.length;
     const medianIndex = Math.floor(expectedLength / 2) - 1;
@@ -58,5 +68,4 @@ function caseWithExactBorders(smallest: number[], biggest: number[]): number {
 
         return smallest[medianIndex]
     }
-
 }
